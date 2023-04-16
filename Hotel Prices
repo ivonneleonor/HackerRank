@@ -1,0 +1,90 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+class HotelRoom{
+    private:
+        int bedrooms;
+        int bathrooms;
+        
+    public:
+     void getdata(){
+            cin>>bedrooms;
+            cin>>bathrooms;
+        }
+        int profit(){
+            int prof;
+            prof=50*bedrooms+100*bathrooms;
+            return prof;
+            
+        };
+    
+};
+
+class HotelApartment {
+    private:        
+        int bedrooms;
+        int bathrooms;
+        
+        
+    public:
+        void getdata(){
+            cin>>bedrooms;
+            cin>>bathrooms;
+        }
+        int profit(){
+            int prof;
+            prof=50*bedrooms+100*bathrooms+100;
+            return prof;
+            
+        };
+    
+    
+};
+
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+
+    int n;
+    string room_type;
+    int totalprofit=0,totalhotalr=0,totalhotala=0;
+    int hpr,hpa;
+    
+    cin>>n;
+    
+    
+    for(int i=0;i<n;i++){
+        
+        cin>>room_type;
+        if(room_type=="standard"){
+           // cout<<"here";
+            HotelRoom hotelr;
+            hotelr.getdata();
+            hpr=hotelr.profit();
+            totalhotalr=totalhotalr+hpr;
+            
+        }else if(room_type=="apartment"){
+            //cout<<"here";
+            HotelApartment hotela;
+            hotela.getdata();
+            hpa=hotela.profit();
+            totalhotala=totalhotala+hpa;
+            
+        }
+        
+        
+    }
+    
+    
+    totalprofit=totalhotalr+totalhotala;
+
+    cout<<totalprofit;
+
+    return 0;
+}
