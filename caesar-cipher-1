@@ -1,0 +1,265 @@
+#include <bits/stdc++.h>
+#include <string>
+#include <iostream>
+#include <algorithm> 
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+/*
+ * Complete the 'caesarCipher' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. STRING s
+ *  2. INTEGER k
+ */
+
+string caesarCipher(string s, int k) {
+
+string abc="abcdefghijklmnopqrstuvwxyz";
+string ABC="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+string stringtemporal;
+
+int d = k % 26;
+
+//cout<<d;
+
+ stringtemporal.reserve(s.length());
+ 
+
+rotate(abc.begin(),abc.begin() + d, abc.end());
+
+rotate(ABC.begin(),ABC.begin() + d, ABC.end());
+
+for(int i=0; i < s.length();i++){
+
+switch(s[i]) {
+      case 'a' :
+       stringtemporal[i]=abc[0];
+       break;
+      case 'A' :
+       stringtemporal[i]=ABC[0];
+       break; 
+      case 'b' :
+       stringtemporal[i]=abc[1];
+       break;
+      case 'B' :
+       stringtemporal[i]=ABC[1];
+       break;  
+      case 'c' :
+        stringtemporal[i]=abc[2]; 
+        break;
+      case 'C' :
+       stringtemporal[i]=ABC[2];
+       break;
+      case 'd' :
+        stringtemporal[i]=abc[3]; 
+        break; 
+      case 'D' :
+       stringtemporal[i]=ABC[3];
+       break;
+      case 'e' :
+        stringtemporal[i]=abc[4]; 
+        break;
+      case 'E' :
+       stringtemporal[i]=ABC[4];
+       break;
+      case 'f' :
+        stringtemporal[i]=abc[5]; 
+        break;
+      case 'F' :
+       stringtemporal[i]=ABC[5];
+       break;
+      case 'g' :
+        stringtemporal[i]=abc[6];
+        break; 
+      case 'G' :
+       stringtemporal[i]=ABC[6];
+       break;
+      case 'h' :
+        stringtemporal[i]=abc[7]; 
+        break;
+      case 'H' :
+       stringtemporal[i]=ABC[7];
+       break;
+      case 'i' :
+         stringtemporal[i]=abc[8];
+         break;
+      case 'I' :
+       stringtemporal[i]=ABC[8];
+       break; 
+      case 'j' :
+         stringtemporal[i]=abc[9];
+         break;
+      case 'J' :
+       stringtemporal[i]=ABC[9];
+       break;
+      case 'k' :
+        stringtemporal[i]=abc[10];
+        break;
+      case 'K' :
+       stringtemporal[i]=ABC[10];
+       break;
+      case 'l' :
+        stringtemporal[i]=abc[11];
+        break;
+      case 'L' :
+       stringtemporal[i]=ABC[11];
+       break;
+      case 'm' :
+        stringtemporal[i]=abc[12];            
+        break;
+      case 'M' :
+       stringtemporal[i]=ABC[12];
+       break;
+      case 'n' :       
+        stringtemporal[i]=abc[13];         
+        break;
+      case 'N' :
+       stringtemporal[i]=ABC[13];
+       break;
+      case 'o' :
+        stringtemporal[i]=abc[14]; 
+        break; 
+      case 'O' :
+       stringtemporal[i]=ABC[14];
+       break;     
+      case 'p' :
+        stringtemporal[i]=abc[15];
+        break;
+      case 'P' :
+       stringtemporal[i]=ABC[15];
+       break;
+      case 'q' :
+        stringtemporal[i]=abc[16];
+        break;
+      case 'Q' :
+       stringtemporal[i]=ABC[16];
+       break;
+      case 'r' :
+        stringtemporal[i]=abc[17];
+        break;
+      case 'R' :
+       stringtemporal[i]=ABC[17];
+       break;
+      case 's' :
+        stringtemporal[i]=abc[18]; 
+        break;
+      case 'S' :
+       stringtemporal[i]=ABC[18];
+       break;
+      case 't' :
+        stringtemporal[i]=abc[19];
+        break;
+      case 'T' :
+       stringtemporal[i]=ABC[19];
+       break;
+      case 'u' :
+        stringtemporal[i]=abc[20];
+        break;
+      case 'U' :
+       stringtemporal[i]=ABC[20];
+       break;
+      case 'v' :
+        stringtemporal[i]=abc[21];
+        break;
+      case 'V' :
+       stringtemporal[i]=ABC[21];
+       break;
+      case 'w' :
+        stringtemporal[i]=abc[22];
+        break;
+      case 'W' :
+       stringtemporal[i]=ABC[22];
+       break;
+      case 'x' :
+        stringtemporal[i]=abc[23];
+        break; 
+      case 'X' :
+       stringtemporal[i]=ABC[23];
+       break;
+      case 'y' :
+        stringtemporal[i]=abc[24];
+        break; 
+      case 'Y' :
+       stringtemporal[i]=ABC[24];
+       break;
+      case 'z' :
+        stringtemporal[i]=abc[25];
+        break; 
+      case 'Z' :
+       stringtemporal[i]=ABC[25];
+       break; 
+      default:   
+      case '-' :
+        stringtemporal[i]=s[i];
+        break; 
+   }
+   
+}
+
+/*
+for(int i=0; i < s.length();i++){
+    cout<<stringtemporal[i];
+}
+*/
+
+return stringtemporal;
+//return s;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string s;
+    getline(cin, s);
+
+    string k_temp;
+    getline(cin, k_temp);
+
+    int k = stoi(ltrim(rtrim(k_temp)));
+
+    string result = caesarCipher(s, k);
+/*
+ for(int i=0; i < s.length();i++){
+    cout<<result[i];
+}
+*/
+   // cout<<result;
+    fout << result.c_str() << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
